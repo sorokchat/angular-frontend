@@ -23,6 +23,9 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/app/entrypoint/main.ts",
+            "alias": {
+              "@nestjs/swagger": "./empty-module.js"
+            },
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [

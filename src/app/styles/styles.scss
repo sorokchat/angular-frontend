@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+body {
+  color: $primaryTextColor;
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -30,4 +34,8 @@ li {
   font-weight: inherit;
   font-style: inherit;
   font-family: inherit;
+}
+
+h1 {
+  font-size: 26px;
 }
