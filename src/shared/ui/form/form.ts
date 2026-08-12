@@ -14,6 +14,8 @@ export class Form<T> {
   protected onSubmit(event: SubmitEvent): void {
     event.preventDefault();
     const data = this.form().value();
-    this.send.emit(data);
+    if (this.form().valid()) {
+      this.send.emit(data);
+    }
   }
 }

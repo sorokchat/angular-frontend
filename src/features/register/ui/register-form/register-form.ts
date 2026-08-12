@@ -1,7 +1,7 @@
 import { Button, Field, Form, withZod } from '@/shared';
 import { Component, signal } from '@angular/core';
 import { form } from '@angular/forms/signals';
-import { NewUserSchema, type NewUserPayload } from '@sorokchat/contracts';
+import { type NewUserPayload, NewUserSchema } from '@sorokchat/contracts';
 
 @Component({
   selector: 'app-register-form',
