@@ -1,0 +1,34 @@
+@use '../../../shared/styles/colors.scss' as *;
+
+:host {
+  display: contents;
+}
+
+.button {
+  padding: 10px;
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s all linear;
+
+  &[type='submit'] {
+    color: $primaryTextColor;
+    background-color: $buttonSubmitBackgroundColor;
+    font-size: 24px;
+
+    &:hover {
+      background-color: $buttonSubmitBackgroundHoverColor;
+    }
+  }
+
+  &:disabled {
+
+    &,
+    &:hover {
+      background-color: $buttonDisabledBackgroundColor;
+      cursor: not-allowed;
+    }
+  }
+}
