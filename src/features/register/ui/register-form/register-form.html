@@ -14,5 +14,7 @@
     label="Видиме ім'я"
   />
   <app-button [disabled]="form.invalid()">Зареєструватися</app-button>
-  <p>Якщо вже зареєстровані, <a [routerLink]="loginPath.fullPath">увійдіть</a>.</p>
+  <p class="guide">
+    Якщо вже зареєстровані, <a class="accent" [routerLink]="loginPath.fullPath">увійдіть</a>.
+  </p>
 </app-form>

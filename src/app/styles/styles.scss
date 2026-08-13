@@ -19,6 +19,10 @@ img {
 
 a {
   text-decoration: none;
+
+  &.accent:hover {
+    text-decoration: underline;
+  }
 }
 
 ul,
@@ -39,4 +43,13 @@ li {
 h1 {
   font-size: 26px;
   text-align: center;
+}
+
+.guide {
+  text-align: center;
+  font-size: 20px;
+}
+
+.accent {
+  color: $accentColor;
 }
