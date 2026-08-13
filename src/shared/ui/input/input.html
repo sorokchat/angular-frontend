@@ -1,1 +1,2 @@
-<input [formField]="field()" />
+@let input = field();
+<input [formField]="input" [placeholder]="placeholder()" [type]="type()" [id]="input().name()" />

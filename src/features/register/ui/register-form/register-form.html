@@ -1,7 +1,17 @@
-<app-form [form]="registerForm()" (send)="register($event)">
+@let form = registerForm();
+<app-form [form]="form" (send)="register($event)">
   <h1>Реєстрація</h1>
-  <app-field [field]="registerForm.login" />
-  <app-field [field]="registerForm.password" />
-  <app-field [field]="registerForm.displayName" />
-  <app-button>Зареєструватися</app-button>
+  <app-field [field]="registerForm.login" placeholder="Ваш логін" label="Логін" />
+  <app-field
+    [field]="registerForm.password"
+    placeholder="Ваш пароль"
+    type="password"
+    label="Пароль"
+  />
+  <app-field
+    [field]="registerForm.displayName"
+    placeholder="Ваше видиме ім'я"
+    label="Видиме ім'я"
+  />
+  <app-button [disabled]="form.invalid()">Зареєструватися</app-button>
 </app-form>

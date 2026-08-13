@@ -8,4 +8,5 @@ import { Component, input } from '@angular/core';
 })
 export class Button {
   public readonly type = input<'button' | 'submit' | 'reset'>('submit');
+  public readonly disabled = input<boolean>(false);
 }

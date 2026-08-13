@@ -1,1 +1,3 @@
-<app-input [field]="field()" />
+@let input = field();
+<label [htmlFor]="input().name()">{{ label() }}</label>
+<app-input [field]="input" [placeholder]="placeholder()" [type]="type()" />
