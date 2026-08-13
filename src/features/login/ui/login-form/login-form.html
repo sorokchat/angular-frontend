@@ -4,4 +4,5 @@
   <app-field [field]="loginForm.login" label="Логін" placeholder="Ваш логін" />
   <app-field [field]="loginForm.password" label="Пароль" placeholder="Ваш пароль" type="password" />
   <app-button [disabled]="form.invalid()">Увійти</app-button>
+  <p>Якщо ще не зареєстровані, <a [routerLink]="registerPath.fullPath">зареєстровані</a>.</p>
 </app-form>

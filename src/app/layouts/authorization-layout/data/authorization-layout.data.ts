@@ -1,8 +1,8 @@
 import { LOGIN_PAGE, REGISTER_PAGE } from '@/pages';
-import { type Layout } from '@/shared';
+import { PathConfig, type Layout } from '@/shared';
 
 export const AUTHORIZATION_LAYOUT: Layout = {
-  path: 'authorization',
+  path: PathConfig.authorization().path,
   loadComponent: () => import('../ui').then((module) => module.AuthorizationLayout),
   children: [REGISTER_PAGE, LOGIN_PAGE],
 };

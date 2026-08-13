@@ -1,11 +1,12 @@
-import { Button, Field, Form, withZod } from '@/shared';
+import { Button, Field, Form, PathConfig, withZod } from '@/shared';
 import { Component, signal } from '@angular/core';
 import { form } from '@angular/forms/signals';
+import { RouterLink } from '@angular/router';
 import { LoginSchema, type LoginPayload } from '@sorokchat/contracts';
 
 @Component({
   selector: 'app-login-form',
-  imports: [Form, Field, Button],
+  imports: [Form, Field, Button, RouterLink],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
@@ -16,4 +17,6 @@ export class LoginForm {
   });
 
   protected readonly loginForm = form(this.state, withZod(LoginSchema));
+
+  protected readonly registerPath: PathConfig = PathConfig.register();
 }

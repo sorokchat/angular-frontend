@@ -1,7 +1,7 @@
-import { type Page } from '@/shared';
+import { PathConfig, type Page } from '@/shared';
 
 export const REGISTER_PAGE: Page = {
-  path: 'register',
+  path: PathConfig.register().path,
   title: 'Реєстрація',
   loadComponent: () => import('../ui').then((module) => module.RegisterPage),
 };
