@@ -1,2 +1,9 @@
 @let input = field();
-<input [formField]="input" [placeholder]="placeholder()" [type]="type()" [id]="input().name()" />
+<input
+  [formField]="input"
+  class="input"
+  [placeholder]="placeholder()"
+  [type]="type()"
+  [id]="input().name()"
+  [class.error]="input().invalid()"
+/>
