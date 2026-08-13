@@ -1,0 +1,33 @@
+@use '../../../shared/styles/colors.scss' as *;
+
+:host {
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+}
+
+.input {
+  display: inline-block;
+  width: 100%;
+  background-color: $secondaryBackgroundColor;
+  padding: 10px;
+  border: 1px solid $borderColor;
+  outline: none;
+  border-radius: 10px;
+  transition: 0.3s all ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: $primaryTextColor;
+  }
+
+  &.error {
+    border-color: $errorTextColor;
+  }
+
+  &,
+  &::placeholder {
+    font-size: 14px;
+    color: $iconColor;
+  }
+}

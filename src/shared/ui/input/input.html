@@ -1,9 +1,6 @@
 @let input = field();
-<input
-  [formField]="input"
-  class="input"
-  [placeholder]="placeholder()"
-  [type]="type()"
-  [id]="input().name()"
-  [class.error]="input().invalid()"
-/>
+@if (type() === 'password') {
+  <app-password-input [field]="input" [placeholder]="placeholder()" />
+} @else {
+  <app-abstract-input [field]="input" [placeholder]="placeholder()" [type]="type()" />
+}

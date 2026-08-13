@@ -19,4 +19,8 @@ export class LoginForm {
   protected readonly loginForm = form(this.state, withZod(LoginSchema));
 
   protected readonly registerPath: PathConfig = PathConfig.register();
+
+  public login(payload: LoginPayload): void {
+    console.log(payload);
+  }
 }

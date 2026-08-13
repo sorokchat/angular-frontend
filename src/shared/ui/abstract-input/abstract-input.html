@@ -1,0 +1,10 @@
+@let input = field();
+<input
+  [formField]="input"
+  class="input"
+  [placeholder]="placeholder()"
+  [type]="type()"
+  [id]="input().name()"
+  [class.error]="input().invalid()"
+/>
+<ng-content />

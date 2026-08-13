@@ -1,10 +1,12 @@
 import type { InputType } from '../../types';
 import { Component, input } from '@angular/core';
-import { type FieldTree, FormField } from '@angular/forms/signals';
+import { type FieldTree } from '@angular/forms/signals';
+import { PasswordInput } from '../password-input';
+import { AbstractInput } from '../abstract-input/abstract-input';
 
 @Component({
   selector: 'app-input',
-  imports: [FormField],
+  imports: [PasswordInput, AbstractInput],
   templateUrl: './input.html',
   styleUrl: './input.scss',
 })

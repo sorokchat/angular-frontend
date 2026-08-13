@@ -1,5 +1,5 @@
 @let form = loginForm();
-<app-form [form]="form">
+<app-form [form]="form" (send)="login($event)">
   <h1>Вхід</h1>
   <app-field [field]="loginForm.login" label="Логін" placeholder="Ваш логін" />
   <app-field [field]="loginForm.password" label="Пароль" placeholder="Ваш пароль" type="password" />
