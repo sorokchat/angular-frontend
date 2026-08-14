@@ -1,4 +1,8 @@
 export class PathConfig {
+  private static readonly AUTHORIZATION: PathConfig = new PathConfig('authorization', null);
+  private static readonly REGISTER: PathConfig = new PathConfig("register", PathConfig.AUTHORIZATION);
+  private static readonly LOGIN: PathConfig = new PathConfig("login", PathConfig.AUTHORIZATION);
+
   private value: string;
   private parent: PathConfig | null;
 
@@ -16,15 +20,15 @@ export class PathConfig {
     return `/${this.parent.fullPath}/${this.value}`;
   }
 
-  public static authorization(): PathConfig {
-    return new PathConfig('authorization', null);
+  public static get authorization(): PathConfig {
+    return PathConfig.AUTHORIZATION;
   }
 
-  public static register(): PathConfig {
-    return new PathConfig('register', this.authorization());
+  public static get register(): PathConfig {
+    return PathConfig.REGISTER;
   }
 
-  public static login(): PathConfig {
-    return new PathConfig('login', this.authorization());
+  public static get login(): PathConfig {
+    return PathConfig.LOGIN;
   }
 }
