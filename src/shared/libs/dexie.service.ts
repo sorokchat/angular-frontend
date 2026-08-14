@@ -20,8 +20,8 @@ export class DexieService implements Storage {
     });
   }
 
-  public get<T>(key: string): Signal<T | null> {
-    const writable = signal<T | null>(null);
+  public get<T>(key: string): Signal<T | null | undefined> {
+    const writable = signal<T | null | undefined>(undefined);
     this.loadValue<T>(key).then((value) => writable.set(value));
     return writable.asReadonly();
   }

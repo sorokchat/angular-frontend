@@ -8,9 +8,9 @@ export class PwaStorage implements Storage {
   private readonly cache: Storage = inject(CACHE_SERVICE);
   private readonly persistance: Storage = inject(PERSISTANCE_SERVICE);
 
-  public get<T>(key: string): Signal<T | null> {
+  public get<T>(key: string): Signal<T | null | undefined> {
     const fromCache = this.cache.get<T>(key);
-    if (fromCache() !== null) return fromCache;
+    if (fromCache()) return fromCache;
     const fromPersistance = this.persistance.get<T>(key);
     toObservable(fromPersistance).subscribe((value) => this.cache.set(key, value));
     return this.cache.get<T>(key);

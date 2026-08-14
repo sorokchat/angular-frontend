@@ -7,7 +7,7 @@ export class AccessTokenStore {
 
   private readonly storage: Storage = inject(STORAGE_SERVICE);
 
-  public getToken(): Signal<string | null> {
+  public getToken(): Signal<string | null | undefined> {
     return this.storage.get<string>(AccessTokenStore.KEY);
   }
 
