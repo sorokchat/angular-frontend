@@ -1,3 +1,4 @@
+import { environment } from '@/shared';
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import {
@@ -6,26 +7,53 @@ import {
   AUTHORIZATION_CONTROLLER,
   AUTHORIZATION_ROUTES,
   type LoginPayload,
+  type GetUserPayload,
 } from '@sorokchat/contracts';
 import { lastValueFrom } from 'rxjs';
+import { AccessTokenStore } from './access-token.store';
 
 @Service()
 export class AuthorizationService {
-  private static readonly CONTROLLER: string = AUTHORIZATION_CONTROLLER;
-  private static readonly REGISTER: string = `${AuthorizationService.CONTROLLER}/${AUTHORIZATION_ROUTES.REGISTER}`;
-  private static readonly LOGIN: string = `${AuthorizationService.CONTROLLER}/${AUTHORIZATION_ROUTES.LOGIN}`;
+  private static readonly CONTROLLER: string = `${environment.apiUrl}${AUTHORIZATION_CONTROLLER}`;
+  private static readonly REGISTER: string = `${AuthorizationService.CONTROLLER}${AUTHORIZATION_ROUTES.REGISTER}`;
+  private static readonly LOGIN: string = `${AuthorizationService.CONTROLLER}${AUTHORIZATION_ROUTES.LOGIN}`;
+  private static readonly LOGOUT: string = `${AuthorizationService.CONTROLLER}${AUTHORIZATION_ROUTES.LOGOUT}`;
+  private static readonly REFRESH_TOKENS: string = `${AuthorizationService.CONTROLLER}${AUTHORIZATION_ROUTES.REFRESH_TOKENS}`;
+  private static readonly PROFILE: string = `${AuthorizationService.CONTROLLER}${AUTHORIZATION_ROUTES.PROFILE}`;
 
   private readonly client: HttpClient = inject(HttpClient);
+  private readonly tokenStorage: AccessTokenStore = inject(AccessTokenStore);
 
-  public async register(payload: NewUserPayload): Promise<AuthorizedPayload> {
-    return await lastValueFrom(
+  public async register(payload: NewUserPayload): Promise<void> {
+    const result = await lastValueFrom(
       this.client.post<AuthorizedPayload>(AuthorizationService.REGISTER, payload),
     );
+    await this.authorize(result);
   }
 
-  public async login(payload: LoginPayload): Promise<AuthorizedPayload> {
-    return await lastValueFrom(
+  public async login(payload: LoginPayload): Promise<void> {
+    const result = await lastValueFrom(
       this.client.post<AuthorizedPayload>(AuthorizationService.LOGIN, payload),
     );
+    await this.authorize(result);
+  }
+
+  public async logout(): Promise<void> {
+    await lastValueFrom(this.client.delete<void>(AuthorizationService.LOGOUT));
+  }
+
+  public async refreshTokens(): Promise<void> {
+    const result = await lastValueFrom(
+      this.client.put<AuthorizedPayload>(AuthorizationService.REFRESH_TOKENS, null),
+    );
+    await this.authorize(result);
+  }
+
+  public async profile(): Promise<GetUserPayload> {
+    return await lastValueFrom(this.client.get<GetUserPayload>(AuthorizationService.PROFILE));
+  }
+
+  private async authorize(payload: AuthorizedPayload): Promise<void> {
+    await this.tokenStorage.setToken(payload.accessToken);
   }
 }

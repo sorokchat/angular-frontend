@@ -6,6 +6,7 @@ import { provideHttp } from './http.provider';
 import { provideStorage } from './storage.provider';
 import { provideCache } from './cache.provider';
 import { providePersistance } from './persistance.provider';
+import { provideTanstackQuery } from './tanstack.provider';
 
 export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   provideGlobalErrorListeners(),
@@ -15,4 +16,5 @@ export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   provideCache(),
   providePersistance(),
   provideStorage(),
+  provideTanstackQuery(),
 ];

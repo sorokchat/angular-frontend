@@ -1,2 +1,2 @@
-export { RegisterForm } from './register';
-export { LoginForm } from './login';
+export { RegisterForm, injectRegister, REGISTER_KEY } from './register';
+export { LoginForm, injectLogin, LOGIN_KEY } from './login';

@@ -1,6 +1,6 @@
 export type { Page, Layout, InputType } from './types';
 export { Form, Button, Field, Input } from './ui';
-export { withZod, DexieService } from './libs';
+export { withZod, DexieService, injectMutation, injectQuery } from './libs';
 export { PathConfig, environment } from './config';
 export {
   type Storage,

@@ -1,1 +1,1 @@
-export { AuthorizationService } from './api';
+export { AuthorizationService, PROFILE_KEY, injectProfile, AccessTokenStore } from './api';

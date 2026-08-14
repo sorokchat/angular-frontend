@@ -1,11 +1,11 @@
 import { inject, Service, type Signal } from '@angular/core';
 import { type Storage } from './storage.interface';
-import { CACHE_SERVICE, STORAGE_SERVICE } from './storage.token';
+import { CACHE_SERVICE, PERSISTANCE_SERVICE } from './storage.token';
 
 @Service()
 export class PwaStorage implements Storage {
   private readonly cache: Storage = inject(CACHE_SERVICE);
-  private readonly persistance: Storage = inject(STORAGE_SERVICE);
+  private readonly persistance: Storage = inject(PERSISTANCE_SERVICE);
 
   public get<T>(key: string): Signal<T | null> {
     const fromCache = this.cache.get<T>(key);
