@@ -3,10 +3,16 @@ import { provideGlobalErrorListeners } from './browser-global-error-listeners.pr
 import { provideRouter } from './router.provider';
 import { providePwa } from './pwa.provider';
 import { provideHttp } from './http.provider';
+import { provideStorage } from './storage.provider';
+import { provideCache } from './cache.provider';
+import { providePersistance } from './persistance.provider';
 
 export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   provideGlobalErrorListeners(),
   provideRouter(),
   providePwa(),
   provideHttp(),
+  provideCache(),
+  providePersistance(),
+  provideStorage(),
 ];
