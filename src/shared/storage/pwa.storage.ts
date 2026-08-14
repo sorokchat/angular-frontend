@@ -1,6 +1,7 @@
 import { inject, Service, type Signal } from '@angular/core';
 import { type Storage } from './storage.interface';
 import { CACHE_SERVICE, PERSISTANCE_SERVICE } from './storage.token';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Service()
 export class PwaStorage implements Storage {
@@ -11,9 +12,7 @@ export class PwaStorage implements Storage {
     const fromCache = this.cache.get<T>(key);
     if (fromCache() !== null) return fromCache;
     const fromPersistance = this.persistance.get<T>(key);
-    if (fromPersistance() !== null) {
-      this.cache.set(key, fromPersistance());
-    }
+    toObservable(fromPersistance).subscribe((value) => this.cache.set(key, value));
     return this.cache.get<T>(key);
   }
 

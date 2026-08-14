@@ -1,1 +1,7 @@
-export { AuthorizationService, PROFILE_KEY, injectProfile, AccessTokenStore } from './api';
+export {
+  AuthorizationService,
+  PROFILE_KEY,
+  injectProfile,
+  AccessTokenStore,
+  accessTokenInterceptor,
+} from './api';
