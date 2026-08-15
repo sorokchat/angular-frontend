@@ -1,4 +1,4 @@
-import { environment } from '@/shared';
+import { environment, PathConfig } from '@/shared';
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import {
@@ -9,7 +9,7 @@ import {
   type LoginPayload,
   type GetUserPayload,
 } from '@sorokchat/contracts';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { AccessTokenStore } from './access-token.store';
 
 @Service()
