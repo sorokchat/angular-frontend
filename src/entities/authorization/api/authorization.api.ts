@@ -9,7 +9,7 @@ import {
   type LoginPayload,
   type GetUserPayload,
 } from '@sorokchat/contracts';
-import { lastValueFrom } from 'rxjs';
+import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { AccessTokenStore } from './access-token.store';
 
 @Service()
@@ -25,32 +25,32 @@ export class AuthorizationService {
   private readonly tokenStorage: AccessTokenStore = inject(AccessTokenStore);
 
   public async register(payload: NewUserPayload): Promise<void> {
-    const result = await lastValueFrom(
+    const result = await firstValueFrom(
       this.client.post<AuthorizedPayload>(AuthorizationService.REGISTER, payload),
     );
     await this.authorize(result);
   }
 
   public async login(payload: LoginPayload): Promise<void> {
-    const result = await lastValueFrom(
+    const result = await firstValueFrom(
       this.client.post<AuthorizedPayload>(AuthorizationService.LOGIN, payload),
     );
     await this.authorize(result);
   }
 
   public async logout(): Promise<void> {
-    await lastValueFrom(this.client.delete<void>(AuthorizationService.LOGOUT));
+    await firstValueFrom(this.client.delete<void>(AuthorizationService.LOGOUT));
   }
 
   public async refreshTokens(): Promise<void> {
-    const result = await lastValueFrom(
+    const result = await firstValueFrom(
       this.client.put<AuthorizedPayload>(AuthorizationService.REFRESH_TOKENS, null),
     );
     await this.authorize(result);
   }
 
   public async profile(): Promise<GetUserPayload> {
-    return await lastValueFrom(this.client.get<GetUserPayload>(AuthorizationService.PROFILE));
+    return await firstValueFrom(this.client.get<GetUserPayload>(AuthorizationService.PROFILE));
   }
 
   private async authorize(payload: AuthorizedPayload): Promise<void> {

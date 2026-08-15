@@ -5,4 +5,5 @@ export {
   AccessTokenStore,
   accessTokenInterceptor,
   injectAuthenticated,
+  refreshTokenInterceptor,
 } from './authorization';

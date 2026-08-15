@@ -18,7 +18,7 @@ export const accessTokenInterceptor: HttpInterceptorFn = (
     filter((token) => token !== undefined),
     mergeMap((token) => {
       if (!token) return next(request);
-      return next(request.clone({ setHeaders: { Authorization: `Bearer ${token}` } }));
+      return next(request.clone({ setHeaders: { authorization: `Bearer ${token}` } }));
     }),
   );
 };
