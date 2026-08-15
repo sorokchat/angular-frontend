@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: angular-frontend
+    runtime: docker
+    repo: https://github.com/sorokchat/angular-frontend.git
+    branch: master
+    autoDeploy: true
