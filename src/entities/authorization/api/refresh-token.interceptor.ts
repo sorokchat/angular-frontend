@@ -5,10 +5,9 @@ import {
   type HttpInterceptorFn,
   type HttpRequest,
 } from '@angular/common/http';
-import { catchError, from, switchMap, type Observable } from 'rxjs';
+import { catchError, filter, from, switchMap, type Observable } from 'rxjs';
 import { inject } from '@angular/core';
 import { AuthorizationService } from './authorization.api';
-import { accessTokenInterceptor } from './access-token.interceptor';
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
@@ -21,7 +20,9 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (
         const method = error.headers.get('www-authenticate');
         if (method && method === 'Bearer') {
           return from(authorizationService.refreshTokens()).pipe(
-            switchMap(() => accessTokenInterceptor(request, next)),
+            switchMap(({ accessToken }) =>
+              next(request.clone({ setHeaders: { Authorization: `Bearer ${accessToken}` } })),
+            ),
           );
         }
       }

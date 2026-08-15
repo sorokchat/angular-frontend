@@ -42,11 +42,12 @@ export class AuthorizationService {
     await firstValueFrom(this.client.delete<void>(AuthorizationService.LOGOUT));
   }
 
-  public async refreshTokens(): Promise<void> {
+  public async refreshTokens(): Promise<AuthorizedPayload> {
     const result = await firstValueFrom(
       this.client.put<AuthorizedPayload>(AuthorizationService.REFRESH_TOKENS, null),
     );
     await this.authorize(result);
+    return result;
   }
 
   public async profile(): Promise<GetUserPayload> {
