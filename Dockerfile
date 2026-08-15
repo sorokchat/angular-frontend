@@ -4,6 +4,7 @@ ADD *.json .
 RUN npm ci
 ADD . .
 RUN npm run build
+COPY public /opt/app/dist/angular-frontend/
 
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
