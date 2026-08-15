@@ -4,4 +4,5 @@ export {
   injectProfile,
   AccessTokenStore,
   accessTokenInterceptor,
+  injectAuthenticated,
 } from './authorization';
