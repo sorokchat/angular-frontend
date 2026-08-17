@@ -3,7 +3,7 @@ import { PathConfig } from '@/shared';
 import { inject, Injectable, Injector } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { CanActivateChild, Router, UrlTree } from '@angular/router';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable, skipWhile } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AnonymousGuard implements CanActivateChild {
@@ -13,7 +13,7 @@ export class AnonymousGuard implements CanActivateChild {
 
   public canActivateChild(): Observable<boolean | UrlTree> {
     return toObservable(this.isAuthenticated, { injector: this.injector }).pipe(
-      filter((value) => value !== undefined),
+      skipWhile((value) => value === undefined),
       map((isAuthenticated) => {
         if (!isAuthenticated) return true;
         return this.router.parseUrl(PathConfig.chats.fullPath);

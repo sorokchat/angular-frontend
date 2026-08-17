@@ -7,4 +7,5 @@ export const AUTHORIZATION_LAYOUT: Layout = {
   loadComponent: () => import('../ui').then((module) => module.AuthorizationLayout),
   children: [REGISTER_PAGE, LOGIN_PAGE],
   canActivateChild: [AnonymousGuard],
+  runGuardsAndResolvers: 'always',
 };

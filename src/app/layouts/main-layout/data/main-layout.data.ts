@@ -7,4 +7,5 @@ export const MAIN_LAYOUT: Layout = {
   canActivateChild: [AuthorizedGuard],
   loadComponent: () => import('../ui').then((module) => module.MainLayout),
   children: [CHATS_PAGE],
+  runGuardsAndResolvers: 'always',
 };

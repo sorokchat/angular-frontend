@@ -5,4 +5,5 @@ export interface Page {
   title: Route['title'];
   canActivate?: Route['canActivate'];
   loadComponent: Route['loadComponent'];
+  runGuardsAndResolvers?: Route['runGuardsAndResolvers'];
 }

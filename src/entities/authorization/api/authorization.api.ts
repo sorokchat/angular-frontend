@@ -1,4 +1,4 @@
-import { environment, PathConfig } from '@/shared';
+import { environment } from '@/shared';
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import {
@@ -11,6 +11,7 @@ import {
 } from '@sorokchat/contracts';
 import { firstValueFrom } from 'rxjs';
 import { AccessTokenStore } from './access-token.store';
+import { Router } from '@angular/router';
 
 @Service()
 export class AuthorizationService {
@@ -23,6 +24,7 @@ export class AuthorizationService {
 
   private readonly client: HttpClient = inject(HttpClient);
   private readonly tokenStorage: AccessTokenStore = inject(AccessTokenStore);
+  private readonly router: Router = inject(Router);
 
   public async register(payload: NewUserPayload): Promise<void> {
     const result = await firstValueFrom(
@@ -40,6 +42,7 @@ export class AuthorizationService {
 
   public async logout(): Promise<void> {
     await firstValueFrom(this.client.delete<void>(AuthorizationService.LOGOUT));
+    this.retriggerGuards();
   }
 
   public async refreshTokens(): Promise<AuthorizedPayload> {
@@ -56,5 +59,10 @@ export class AuthorizationService {
 
   private async authorize(payload: AuthorizedPayload): Promise<void> {
     await this.tokenStorage.setToken(payload.accessToken);
+    this.retriggerGuards();
+  }
+
+  private retriggerGuards(): void {
+    this.router.navigate(['/']);
   }
 }
