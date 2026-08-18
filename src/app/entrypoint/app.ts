@@ -1,4 +1,6 @@
 import { LoadingService, PageLoader } from '@/entities';
+import { LeftSidebarService } from '@/widgets';
+import { NgComponentOutlet } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import {
   NavigationCancel,
@@ -11,13 +13,14 @@ import {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PageLoader],
+  imports: [RouterOutlet, PageLoader, NgComponentOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
   private readonly router: Router = inject(Router);
   private readonly loadingService: LoadingService = inject(LoadingService);
+  protected readonly leftSidebarService: LeftSidebarService = inject(LeftSidebarService);
   protected isLoading = this.loadingService.isLoading;
 
   public ngOnInit(): void {

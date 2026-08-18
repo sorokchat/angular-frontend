@@ -1,1 +1,2 @@
-export { LeftSidebar, type MenuItem } from './left-sidebar';
+export { LeftSidebar, type MenuItem, LeftSidebarService } from './left-sidebar';
+export { ChatsSidebar, CHATS_SIDEBAR } from './chats';
