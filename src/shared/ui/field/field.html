@@ -3,7 +3,7 @@
 <app-input [field]="input" [placeholder]="placeholder()" [type]="type()" />
 @if (input().invalid()) {
   <ul class="errors">
-    @for (error of input().errors(); track error) {
+    @for (error of input().errors(); track error.message) {
       <li class="error">{{ error.message }}</li>
     }
   </ul>
