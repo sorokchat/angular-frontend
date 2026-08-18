@@ -4,7 +4,7 @@
     <ul class="list">
       @for (item of menu; track item.path) {
         <li class="item">
-          <a class="link" [routerLink]="item.path">
+          <a class="link" [routerLink]="item.path" [title]="item.title">
             <app-action-icon [icon]="item.icon" routerLinkActive="_active" />
           </a>
         </li>
