@@ -8,7 +8,7 @@ export class CacheService implements Storage {
   public get<T>(key: string): Signal<T | null | undefined> {
     const oldSignal = this.cache.get(key) as WritableSignal<T | null | undefined> | undefined;
     if (oldSignal) return oldSignal.asReadonly();
-    const newSignal: WritableSignal<T | null | undefined> = signal<T | null | undefined>(undefined);
+    const newSignal: WritableSignal<T | null | undefined> = signal<T | null | undefined>(null);
     this.cache.set(key, newSignal);
     return newSignal.asReadonly();
   }
