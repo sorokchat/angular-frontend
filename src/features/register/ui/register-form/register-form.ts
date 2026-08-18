@@ -20,6 +20,8 @@ export class RegisterForm {
     displayName: '',
   });
 
+  protected readonly isPending = this.mutation.isPending;
+
   protected readonly registerForm = form(this.registerModel, withZod(NewUserSchema));
 
   protected readonly loginPath: PathConfig = PathConfig.login;

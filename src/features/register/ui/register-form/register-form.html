@@ -13,7 +13,7 @@
     placeholder="Ваше видиме ім'я"
     label="Видиме ім'я"
   />
-  <app-button [disabled]="form.invalid()">Зареєструватися</app-button>
+  <app-button [disabled]="form.invalid() || isPending()">Зареєструватися</app-button>
   <p class="guide">
     Якщо вже зареєстровані, <a class="accent" [routerLink]="loginPath.fullPath">увійдіть</a>.
   </p>

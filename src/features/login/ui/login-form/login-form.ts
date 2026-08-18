@@ -19,6 +19,8 @@ export class LoginForm {
     password: '',
   });
 
+  protected isPending = this.mutation.isPending;
+
   protected readonly loginForm = form(this.state, withZod(LoginSchema));
 
   protected readonly registerPath: PathConfig = PathConfig.register;
