@@ -9,4 +9,5 @@ export {
   PERSISTANCE_SERVICE,
   CacheService,
   PwaStorage,
+  LocalStorageService,
 } from './storage';
