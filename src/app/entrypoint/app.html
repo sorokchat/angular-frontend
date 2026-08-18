@@ -1,7 +1,2 @@
 <app-page-loader [isShown]="isLoading()" />
-@if (leftSidebarService.isOpen()) {
-  <aside></aside>
-  [@SlideInOut]
-  <ng-container *ngComponentOutlet="leftSidebarService.component()" />
-}
 <router-outlet />

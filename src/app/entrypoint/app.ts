@@ -1,6 +1,5 @@
 import { LoadingService, PageLoader } from '@/entities';
 import { LeftSidebarService } from '@/widgets';
-import { NgComponentOutlet } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import {
   NavigationCancel,
@@ -13,7 +12,7 @@ import {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PageLoader, NgComponentOutlet],
+  imports: [RouterOutlet, PageLoader],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
