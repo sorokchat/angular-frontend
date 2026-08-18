@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { LoadingService, PageLoader } from '@/entities';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, PageLoader],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App { }
+export class App implements OnInit {
+  private readonly router: Router = inject(Router);
+  private readonly loadingService: LoadingService = inject(LoadingService);
+  protected isLoading = this.loadingService.isLoading;
+
+  public ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loadingService.show();
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        this.loadingService.hide();
+      }
+    });
+  }
+}

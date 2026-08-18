@@ -7,3 +7,4 @@ export {
   injectAuthenticated,
   refreshTokenInterceptor,
 } from './authorization';
+export { LoadingService, PageLoader } from './loading';
