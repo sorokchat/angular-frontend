@@ -4,8 +4,8 @@
     <ul class="list">
       @for (item of menu; track item.path) {
         <li class="item">
-          <a class="link" [routerLink]="item.path" routerLinkActive="_active">
-            <svg class="icon" [lucideIcon]="item.icon" />
+          <a class="link" [routerLink]="item.path">
+            <app-action-icon [icon]="item.icon" routerLinkActive="_active" />
           </a>
         </li>
       }

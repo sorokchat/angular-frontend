@@ -1,5 +1,5 @@
 export type { Page, Layout, InputType } from './types';
-export { Form, Button, Field, Input } from './ui';
+export { Form, Button, Field, Input, Icon, ActionIcon } from './ui';
 export { withZod, DexieService, injectMutation, injectQuery, AngularStorageService } from './libs';
 export { PathConfig, environment } from './config';
 export {
@@ -11,3 +11,4 @@ export {
   PwaStorage,
   LocalStorageService,
 } from './storage';
+export { ICON_SIZE } from './constants';

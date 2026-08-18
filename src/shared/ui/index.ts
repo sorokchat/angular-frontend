@@ -2,3 +2,5 @@ export { Form } from './form';
 export { Button } from './button';
 export { Field } from './field';
 export { Input } from './input';
+export { Icon } from './icon';
+export { ActionIcon } from './action-icon';

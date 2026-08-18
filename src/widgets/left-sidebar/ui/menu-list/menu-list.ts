@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
 import type { MenuItem } from '../../types';
-import { LucideDynamicIcon } from '@lucide/angular';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ActionIcon } from '@/shared';
 
 @Component({
   selector: 'app-menu-list',
-  imports: [LucideDynamicIcon, RouterLink, RouterLinkActive],
+  imports: [ActionIcon, RouterLink, RouterLinkActive],
   templateUrl: './menu-list.html',
   styleUrl: './menu-list.scss',
 })
