@@ -4,7 +4,7 @@ import { firstValueFrom } from 'rxjs';
 import { type Storage } from '../storage';
 
 @Service()
-export class LocalStorageService implements Storage {
+export class AngularStorageService implements Storage {
   private readonly storage: StorageMap = inject(StorageMap);
 
   public get<T>(key: string): Signal<T | null | undefined> {
