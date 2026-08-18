@@ -1,7 +1,7 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { type FieldTree } from '@angular/forms/signals';
 import { AbstractInput } from '../abstract-input';
-import { LucideDynamicIcon, LucideEye, LucideEyeOff } from '@lucide/angular';
+import { LucideDynamicIcon, LucideEye, LucideEyeOff, type LucideIcon } from '@lucide/angular';
 import { type InputType } from '../../types';
 
 @Component({
@@ -15,7 +15,7 @@ export class PasswordInput {
   public readonly placeholder = input<string>('');
   private readonly isShow = signal<boolean>(false);
 
-  protected readonly icon = computed(() => (this.isShow() ? LucideEye : LucideEyeOff));
+  protected readonly icon = computed<LucideIcon>(() => (this.isShow() ? LucideEye : LucideEyeOff));
 
   protected readonly type = computed<InputType>(() => (this.isShow() ? 'text' : 'password'));
 

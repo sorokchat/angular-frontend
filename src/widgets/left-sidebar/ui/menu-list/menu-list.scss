@@ -1,0 +1,33 @@
+@use '../../../../shared/styles/colors.scss' as *;
+
+:host {
+  display: contents;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  padding: 10px;
+  display: block;
+  color: $iconColor;
+  transition: 0.3s all ease;
+  border-radius: 10px;
+
+  svg {
+    background-color: transparent;
+  }
+
+  &._active {
+    color: $primaryTextColor;
+  }
+
+  @media screen and (any-hover: hover) {
+    &:hover {
+      background-color: $hoverColor;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use '../../../../shared/styles/colors.scss' as *;
+
+:host {
+  border-right: 1px solid $borderColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
