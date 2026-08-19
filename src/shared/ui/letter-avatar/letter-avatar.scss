@@ -1,0 +1,17 @@
+@use "../../styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.letter-avatar {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: $primaryBackgroundColor;
+  background-color: $primaryTextColor;
+}

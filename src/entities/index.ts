@@ -8,4 +8,4 @@ export {
   refreshTokenInterceptor,
 } from './authorization';
 export { LoadingService, PageLoader } from './loading';
-export { ChatsService } from './chats';
+export { ChatsService, ChatList, MY_CHATS_KEY, injectMyChats } from './chats';

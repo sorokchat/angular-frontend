@@ -1,0 +1,11 @@
+:host {
+  display: contents;
+}
+
+.chats {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+}

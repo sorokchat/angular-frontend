@@ -1,8 +1,9 @@
 import { Form, Input, withZod } from '@/shared';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SearchSchema, type SearchPayload } from '../../schemas';
 import { form } from '@angular/forms/signals';
 import { LucideSearch, type LucideIcon } from '@lucide/angular';
+import { SearchChatService } from '../../api';
 
 @Component({
   selector: 'app-search-chat',
@@ -12,6 +13,7 @@ import { LucideSearch, type LucideIcon } from '@lucide/angular';
 })
 export class SearchChat {
   private readonly state = signal<SearchPayload>({ search: '' });
+  private readonly service: SearchChatService = inject(SearchChatService);
   private timer: number | null = null;
   protected readonly form = form(this.state, withZod(SearchSchema));
   protected readonly icon: LucideIcon = LucideSearch;
@@ -21,7 +23,7 @@ export class SearchChat {
       clearTimeout(this.timer);
     }
     this.timer = setTimeout(() => {
-      console.log(search);
+      this.service.search(search);
     }, 500);
   }
 }

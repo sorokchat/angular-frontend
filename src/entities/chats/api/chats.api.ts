@@ -8,7 +8,7 @@ import {
   type GetChatPayload,
   type NewChatPayload,
 } from '@sorokchat/contracts';
-import { lastValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 
 @Service()
 export class ChatsService {
@@ -47,42 +47,47 @@ export class ChatsService {
   private readonly client: HttpClient = inject(HttpClient);
 
   public async create(payload: NewChatPayload): Promise<void> {
-    return await lastValueFrom(this.client.post<void>(ChatsService.CREATE_CHAT, payload));
+    return await firstValueFrom(this.client.post<void>(ChatsService.CREATE_CHAT, payload));
   }
 
   public async getMy(): Promise<GetChatPayload[]> {
-    return await lastValueFrom(this.client.get<GetChatPayload[]>(ChatsService.MY_CHATS));
+    try {
+      return await firstValueFrom(this.client.get<GetChatPayload[]>(ChatsService.MY_CHATS));
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   public async update(chatId: number, payload: UpdateChatPayload): Promise<void> {
-    return await lastValueFrom(this.client.put<void>(ChatsService.UPDATE(chatId), payload));
+    return await firstValueFrom(this.client.put<void>(ChatsService.UPDATE(chatId), payload));
   }
 
   public async delete(chatId: number): Promise<void> {
-    return await lastValueFrom(this.client.delete<void>(ChatsService.DELETE(chatId)));
+    return await firstValueFrom(this.client.delete<void>(ChatsService.DELETE(chatId)));
   }
 
   public async addMember(chatId: number, userId: number): Promise<void> {
-    return await lastValueFrom(
+    return await firstValueFrom(
       this.client.put<void>(ChatsService.ADD_MEMBER(chatId, userId), null),
     );
   }
 
   public async removeMember(chatId: number, userId: number): Promise<void> {
-    return lastValueFrom(this.client.put<void>(ChatsService.REMOVE_MEMBER(chatId, userId), null));
+    return firstValueFrom(this.client.put<void>(ChatsService.REMOVE_MEMBER(chatId, userId), null));
   }
 
   public async leave(chatId: number): Promise<void> {
-    return await lastValueFrom(this.client.put<void>(ChatsService.LEAVE(chatId), null));
+    return await firstValueFrom(this.client.put<void>(ChatsService.LEAVE(chatId), null));
   }
 
   public async grant(chatId: number, userId: number, role: string): Promise<void> {
-    return await lastValueFrom(
+    return await firstValueFrom(
       this.client.put<void>(ChatsService.GRANT(chatId, userId, role), null),
     );
   }
 
   public async revoke(chatId: number, userId: number): Promise<void> {
-    return await lastValueFrom(this.client.put<void>(ChatsService.REVOKE(chatId, userId), null));
+    return await firstValueFrom(this.client.put<void>(ChatsService.REVOKE(chatId, userId), null));
   }
 }

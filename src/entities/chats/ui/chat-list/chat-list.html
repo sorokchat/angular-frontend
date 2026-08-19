@@ -1,0 +1,9 @@
+<nav class="chats">
+  <ul>
+    @for (chat of chats(); track chat.id) {
+      <li>
+        <app-chat-card [chat]="chat" />
+      </li>
+    }
+  </ul>
+</nav>

@@ -10,5 +10,7 @@ export const credentialsInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> => {
-  return next(request.clone({ withCredentials: true }));
+  return next(
+    request.clone({ withCredentials: true, setHeaders: { 'Cache-Control': 'no-cache' } }),
+  );
 };

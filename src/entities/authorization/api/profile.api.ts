@@ -6,5 +6,5 @@ export const PROFILE_KEY = 'profile';
 
 export function injectProfile() {
   const service: AuthorizationService = inject(AuthorizationService);
-  return injectQuery([PROFILE_KEY], async () => await service.profile());
+  return injectQuery([PROFILE_KEY], async () => await service.profile(), true);
 }

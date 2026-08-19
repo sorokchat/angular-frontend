@@ -4,3 +4,4 @@ export { Field } from './field';
 export { Input } from './input';
 export { Icon } from './icon';
 export { ActionIcon } from './action-icon';
+export { LetterAvatar } from './letter-avatar';
