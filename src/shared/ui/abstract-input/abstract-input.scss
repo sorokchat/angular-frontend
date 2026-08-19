@@ -25,10 +25,6 @@
   border-radius: 10px;
   transition: 0.3s all ease;
 
-  & + app-icon {
-    pointer-events: none;
-  }
-
   &:hover,
   &:focus-within {
     border-color: $primaryTextColor;
