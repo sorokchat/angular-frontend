@@ -1,6 +1,6 @@
 <app-left-sidebar [topMenu]="topMenu" [bottomMenu]="bottomMenu" />
 @if (leftSidebarService.isOpen()) {
-  <aside>
+  <aside class="subsidebar">
     <ng-container *ngComponentOutlet="leftSidebarService.component()" />
   </aside>
 }

@@ -4,6 +4,15 @@
   display: inline-block;
   position: relative;
   z-index: 0;
+
+  app-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    background: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
 }
 
 .input {

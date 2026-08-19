@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { type FieldState } from '@angular/forms/signals';
 
 @Component({
@@ -10,6 +10,16 @@ import { type FieldState } from '@angular/forms/signals';
 export class Form<T> {
   public readonly form = input.required<FieldState<T>>();
   public readonly send = output<T>();
+  public readonly changed = output<T>();
+
+  constructor() {
+    effect(() => {
+      const currentForm = this.form();
+      if (currentForm.dirty() && currentForm.valid()) {
+        this.changed.emit(currentForm.value());
+      }
+    });
+  }
 
   protected onSubmit(event: SubmitEvent): void {
     event.preventDefault();

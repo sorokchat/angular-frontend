@@ -2,5 +2,10 @@
 @if (type() === 'password') {
   <app-password-input [field]="input" [placeholder]="placeholder()" />
 } @else {
-  <app-abstract-input [field]="input" [placeholder]="placeholder()" [type]="type()" />
+  <app-abstract-input
+    [field]="input"
+    [placeholder]="placeholder()"
+    [type]="type()"
+    [icon]="icon()"
+  />
 }

@@ -1,0 +1,5 @@
+@let searchForm = form();
+
+<app-form [form]="searchForm" (changed)="search($event)">
+  <app-input [field]="form.search" placeholder="Пошук" [icon]="icon" />
+</app-form>
