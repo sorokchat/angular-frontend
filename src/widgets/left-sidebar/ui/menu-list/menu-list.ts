@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
 import type { MenuItem } from '../../types';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ActionIcon } from '@/shared';
+import { LinkIcon } from '@/shared';
 
 @Component({
   selector: 'app-menu-list',
-  imports: [ActionIcon, RouterLink, RouterLinkActive],
+  imports: [LinkIcon, RouterLink, RouterLinkActive],
   templateUrl: './menu-list.html',
   styleUrl: './menu-list.scss',
 })

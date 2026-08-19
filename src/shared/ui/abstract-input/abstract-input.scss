@@ -28,6 +28,9 @@
   &:hover,
   &:focus-within {
     border-color: $primaryTextColor;
+    & + app-icon {
+      color: $primaryTextColor;
+    }
   }
 
   &.error {

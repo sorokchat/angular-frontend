@@ -1,0 +1,23 @@
+@use '../../styles/colors.scss' as *;
+
+:host {
+  display: contents;
+
+  &._active {
+    app-icon {
+      color: $primaryTextColor;
+    }
+  }
+}
+
+app-icon {
+  transition: 0.3s all ease;
+  border-radius: 10px;
+  padding: 10px;
+
+  @media screen and (any-hover: hover) {
+    &:hover {
+      background-color: $hoverColor;
+    }
+  }
+}
